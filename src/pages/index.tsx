@@ -30,13 +30,14 @@ export default function Home() {
   const fetchMoreData = async () => {
     setCurrentPage((prev) => prev + 1);
     const response = await getFilms(String(currentPage));
-    console.log(response);
     setFilms((prev) => [...prev, ...response.movies]);
   };
   return (
     <div
       className={`pt-20`}
-      style={{ backgroundColor: `${currentTheme == "black" ? "black" : ""}` }}>
+      style={{
+        backgroundColor: `${currentTheme == "black" ? "#191D46" : "#B3B8E3"}`,
+      }}>
       <Header arrowBack={false} />
       {!loading ? (
         <main className="min-h-screen flex justify-center">
@@ -53,13 +54,12 @@ export default function Home() {
               dataLength={films.length}
               next={fetchMoreData}
               hasMore={true}
-              loader={<h4>Loading...</h4>}>
+              loader={""}>
               <div className="flex flex-wrap justify-center mb-20">
                 {films?.map((item: MovieList, index) => (
                   <Card
                     key={index}
                     id={item?.id}
-                    filter={checked}
                     rating={String(item?.rating)}
                     genre={item?.genres[0]}
                     description={item.description_full || item.summary}

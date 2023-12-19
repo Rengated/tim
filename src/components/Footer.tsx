@@ -9,7 +9,7 @@ export const Footer: FC = () => {
     <footer
       className={`flex px-20 py-3  w-full py-1 border-b-2 justify-between items-center  bottom-0 left-0`}
       style={{
-        backgroundColor: `${currentTheme == "black" ? "#310058" : "#546270"}`,
+        backgroundColor: `${currentTheme == "black" ? "#B3B8E3" : "#191D46"}`,
       }}>
       <h1 className="text-xl flex text-white leading-loose flex items-center">
         <span
@@ -17,7 +17,7 @@ export const Footer: FC = () => {
           style={{ width: "20px", height: "20px" }}>
           C
         </span>
-        <span>2023 c YSMLreska</span>
+        <span>YSML</span>
       </h1>
     </footer>
   );
