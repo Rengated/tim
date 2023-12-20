@@ -23,16 +23,19 @@ export const Header: FC<HeaderProps> = ({ arrowBack }) => {
       className={`flex px-20 py-3  w-full py-1 border-b-2 justify-between items-center fixed top-0 left-0`}
       style={{
         zIndex: 6,
-        backgroundColor: `${currentTheme == "black" ? "#B3B8E3" : "#191D46"}`,
+        backgroundColor: `${currentTheme == "black" ? "white" : "black"}`,
+        color: `${currentTheme == "black" ? "black" : "white"}`,
       }}>
-      <h1 className="text-xl flex text-white leading-loose ">HD FILMS</h1>
+      <h1 className="text-xl flex   leading-loose ">BEST MOVIES</h1>
       <div className="flex items-center">
         {arrowBack && (
           <Image
             src={arrow}
             alt="arrow"
             onClick={onArrowClick}
-            className="invert cursor-pointer"
+            className={` cursor-pointer ${
+              currentTheme == "black" ? "" : "invert"
+            }`}
           />
         )}
         <Image

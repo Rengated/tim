@@ -72,7 +72,8 @@ const Details: FC = () => {
       <div
         className={`pt-20`}
         style={{
-          backgroundColor: `${currentTheme == "black" ? "#191D46" : "#B3B8E3"}`,
+          backgroundColor: `${currentTheme == "black" ? "black" : "white"}`,
+          color: `${currentTheme == "black" ? "white" : "black"}`,
         }}>
         <Header arrowBack={true} />
         {!loading ? (
@@ -114,32 +115,38 @@ const Details: FC = () => {
                     onClick={() => {
                       router.push(movieDetails?.url || "");
                     }}
-                    className="py-4 w-full px-6 lex items-center justify-center border text-white  font-extrabold cursor-pointer rounded-lg bg-gray-500 hover:bg-black">
+                    className={`py-4 w-full px-6 lex items-center justify-center border  font-extrabold cursor-pointer rounded-lg    ${
+                      currentTheme == "black"
+                        ? "bg-white text-black hover:bg-gray-200 hover:text-black"
+                        : "bg-black text-white hover:bg-gray-700 hover:text-white"
+                    } `}>
                     Watch now
                   </button>
                 </div>
               </div>
 
               <div className="flex  lg:pl-20 flex-col w-full z-index-5">
-                <p className="text-white text-4xl mb-2">
-                  {movieDetails?.title}
-                </p>
+                <p className=" text-4xl mb-2">{movieDetails?.title}</p>
                 {movieDetails?.description_full && (
-                  <p className="text-gray-400 text-2xl mb-2">
+                  <p className=" text-2xl mb-2">
                     {movieDetails?.description_full}
                   </p>
                 )}
-                <p className="text-white mb-3 text-2xl flex flex-wrap  items-center">
-                  Genres:
+                <div className="mb-3 text-2xl flex flex-wrap  items-center">
+                  <p>Genres:</p>
                   {movieDetails?.genres?.map((genre, index) => (
                     <b
-                      className="bg-gray-800 p-2 text-xl rounded-lg ml-2 mb-3"
+                      className={`p-2 text-xl rounded-lg ml-2 mb-3 ${
+                        currentTheme == "black"
+                          ? "bg-white text-black"
+                          : "bg-black text-white"
+                      }`}
                       key={index}>
                       {genre}
                     </b>
                   ))}
-                </p>
-                <div className="flex bg-gray-800 rounded-md p-3 ">
+                </div>
+                <div className="flex rounded-md p-3  flex-col">
                   <p className="text-white text-xl mb-2 mr-5 ">
                     <b>Language: {movieDetails?.language} </b>
                   </p>
@@ -150,26 +157,34 @@ const Details: FC = () => {
                     <b>Runtime: {movieDetails?.runtime} </b>
                   </p>
                 </div>
-                <div className="flex flex-row justify-between flex-wrap mt-5 ">
+                <div className="flex flex-col justify-between flex-wrap mt-5 ">
                   {movieDetails?.torrents?.map((torrent, index) => (
                     <a
                       href={torrent.url}
                       key={index}
-                      className="flex border-2  max-w-sm bg-black p-5 bg-gray-800 text-black mb-2 rounded-md items-center border-transparent hover:bg-black">
+                      className={`flex border-2  max-w-sm p-5  mb-2 rounded-md items-center border-transparent  ${
+                        currentTheme == "black"
+                          ? "bg-white text-black hover:bg-gray-200 hover:text-black"
+                          : "bg-black text-white hover:bg-gray-700 hover:text-white"
+                      }  `}>
                       <Image
                         src={res}
                         alt="res"
-                        className="mr-4 invert"
+                        className={`mr-4 invert ${
+                          currentTheme == "black" ? "filter-none" : ""
+                        }`}
                       />
-                      <span className="mr-4  font-extrabold text-white">
+                      <span className="mr-4  font-extrabold">
                         {torrent.quality}
                       </span>
                       <Image
                         src={file}
                         alt="file"
-                        className="mr-4 invert"
+                        className={`mr-4  invert${
+                          currentTheme == "black" ? "filter-none" : ""
+                        }`}
                       />
-                      <span className="mr-4  font-extrabold text-white">
+                      <span className="mr-4  font-extrabold ">
                         {torrent.size}
                       </span>
                     </a>
@@ -194,7 +209,7 @@ const Details: FC = () => {
                   comments?.map((comment, index) => (
                     <div
                       key={index}
-                      className="flex flex-col border bg-gray-800 w-full p-5 text-white rounded-md mb-3">
+                      className="flex flex-col border bg-gray-500 w-full p-5 text-white rounded-md mb-3">
                       <p className="text-xl extrabold mb-2">{comment.name}</p>
                       <p className="text-gray-200">{comment.text}</p>
                       <button
@@ -213,7 +228,7 @@ const Details: FC = () => {
               height="80"
               width="80"
               radius="9"
-              color="#4d50bf"
+              color="gray"
               ariaLabel="loading"
             />
           </div>

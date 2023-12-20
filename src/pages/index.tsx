@@ -36,7 +36,7 @@ export default function Home() {
     <div
       className={`pt-20`}
       style={{
-        backgroundColor: `${currentTheme == "black" ? "#191D46" : "#B3B8E3"}`,
+        backgroundColor: `${currentTheme == "black" ? "black" : "white"}`,
       }}>
       <Header arrowBack={false} />
       {!loading ? (

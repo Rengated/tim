@@ -39,7 +39,7 @@ export const Card: FC<CardProps> = ({
     <div
       onMouseOver={toggleMouseOver}
       onMouseOut={toggleMouseOver}
-      className=" hover:scale-105 mt-2 flex flex-row bg-white rounded-lg overflow-hidden border border-black basis-90 max-w-md object-cover rounded ml-5 mb-6 cursor-pointer relative"
+      className=" hover:scale-105 mt-2  flex flex-row bg-white rounded-lg overflow-hidden border border-black basis-90 max-w-md object-cover rounded ml-5 mb-6 cursor-pointer relative"
       onClick={onFilmClick}>
       <Image
         width={320}
@@ -47,7 +47,7 @@ export const Card: FC<CardProps> = ({
         src={medium_cover_image}
         alt={title}
       />
-      <div className="flex flex-col p-5 max-w-xs h-full">
+      <div className="flex flex-col p-5 max-w-xs h-full bg-yellow-400">
         <span className="text-extrabold text-xl">
           {title} {year}
         </span>

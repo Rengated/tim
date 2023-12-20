@@ -23,7 +23,13 @@ export const Modal = ({ id, show, setComments, setShow }) => {
     <div
       className="h-screen w-full flex fixed top-0 left-0 z-10 items-center justify-center"
       style={{ backgroundColor: "#000000bf" }}>
-      <div className="flex flex text-white flex-col bg-black rounded-md w-full max-w-xl p-10">
+      <div className="flex flex text-white flex-col bg-stone-700 rounded-lg w-full max-w-xl p-10 relative ">
+        <div
+          className="absolute top-5 right-5 cursor-pointer p-3"
+          onClick={() => setShow(false)}>
+          <span className="w-4 -rotate-45 bg-white h-1 block absolute"></span>
+          <span className="w-4 rotate-45 bg-white h-1 block absolute"></span>
+        </div>
         <span className="mb-3">Имя</span>
         <input
           value={comment.name}
@@ -42,13 +48,8 @@ export const Modal = ({ id, show, setComments, setShow }) => {
         />
         <button
           onClick={sendComments}
-          className="border border-white   p-4 mb-3  hover:bg-white hover:text-black">
+          className="border border-white   p-4 mb-3  rounded-lg hover:bg-white hover:text-black">
           Send
-        </button>
-        <button
-          onClick={() => setShow(false)}
-          className="border border-white  p-4 hover:bg-white hover:text-black">
-          Close
         </button>
       </div>
     </div>
