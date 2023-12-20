@@ -77,7 +77,7 @@ const Details: FC = () => {
         }}>
         <Header arrowBack={true} />
         {!loading ? (
-          <section className="min-h-screen flex items-center flex-col pb-20 px-4 relative ">
+          <section className="min-h-screen flex  flex-col pb-20 px-4 relative justfy-center  items-center">
             <Image
               src={movieDetails?.background_image}
               width={900}
@@ -90,9 +90,9 @@ const Details: FC = () => {
                 objectFit: "cover",
                 borderRadius: "4.5em",
               }}
-              className="  w-full brightness-50 p-10 rounded-lg"
+              className="  w-full brightness-50 p-10 rounded-lg max-lg:hidden"
             />
-            <div className="container py-20 px-20 flex flex-col lg:flex-row items-start">
+            <div className="max-lg: px-5 container py-20 px-20 flex flex-col lg:flex-row max-lg:items-center">
               <div>
                 <div
                   style={{
@@ -115,7 +115,7 @@ const Details: FC = () => {
                     onClick={() => {
                       router.push(movieDetails?.url || "");
                     }}
-                    className={`py-4 w-full px-6 lex items-center justify-center border  font-extrabold cursor-pointer rounded-lg    ${
+                    className={`max-lg:mb-5 py-4 w-full px-6 lex items-center justify-center  border  font-extrabold cursor-pointer rounded-lg    ${
                       currentTheme == "black"
                         ? "bg-white text-black hover:bg-gray-200 hover:text-black"
                         : "bg-black text-white hover:bg-gray-700 hover:text-white"
@@ -147,13 +147,13 @@ const Details: FC = () => {
                   ))}
                 </div>
                 <div className="flex rounded-md p-3  flex-col">
-                  <p className="text-white text-xl mb-2 mr-5 ">
+                  <p className=" text-xl mb-2 mr-5 ">
                     <b>Language: {movieDetails?.language} </b>
                   </p>
-                  <p className="text-white text-xl mb-2 mr-5">
+                  <p className=" text-xl mb-2 mr-5">
                     <b>Rating: {movieDetails?.rating} </b>
                   </p>
-                  <p className="text-white text-xl mb-2 mr-5">
+                  <p className=" text-xl mb-2 mr-5">
                     <b>Runtime: {movieDetails?.runtime} </b>
                   </p>
                 </div>

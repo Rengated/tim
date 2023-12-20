@@ -32,6 +32,7 @@ export default function Home() {
     const response = await getFilms(String(currentPage));
     setFilms((prev) => [...prev, ...response.movies]);
   };
+
   return (
     <div
       className={`pt-20`}

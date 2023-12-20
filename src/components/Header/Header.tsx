@@ -1,10 +1,10 @@
 import { FC, useContext } from "react";
 import { useRouter } from "next/router";
 import { Theme } from "@/store/theme";
-import moon from "../../../public/static/moon.svg";
 import sun from "../../../public/static/sun.svg";
 import Image from "next/image";
 import arrow from "../../../public/static/arrow.png";
+import { getStaticProps } from "next/dist/build/templates/pages";
 
 interface HeaderProps {
   arrowBack: boolean;
