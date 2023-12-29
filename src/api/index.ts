@@ -40,6 +40,15 @@ export type MovieList = {
   }[];
 };
 
+export const getFilmById = async (id: string) => {
+  const response = await instance.get<{
+    data: {
+      movie: MovieList;
+    };
+  }>(`movie_details.json?movie_id=${id}`);
+  return response.data.data.movie;
+};
+
 export const getFilms = async (
   currentPage: string,
   genre: string,
@@ -57,13 +66,4 @@ export const getFilms = async (
     `list_movies.json?page=${currentPage}&limit=${40}&genre=${genre}&query_term=${query}&sort_by=${sortBy}`
   );
   return response.data.data;
-};
-
-export const getFilmById = async (id: string) => {
-  const response = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(movie.data.movie);
-    }, 700);
-  });
-  return response;
 };
