@@ -24,7 +24,7 @@ export const genres = [
 ];
 
 export const sortTypes = [
-  { name: "unset", value: "date_added" },
+  { name: "default sort", value: "date_added" },
   {
     name: "rating",
     value: "rating",
