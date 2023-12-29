@@ -27,6 +27,7 @@ export const Card: FC<CardProps> = ({
   const toggleMouseOver = () => setMouseOver((prev) => !prev);
 
   const router = useRouter();
+
   const onFilmClick = () => {
     router.push(`/movie/${id}`);
   };
@@ -39,31 +40,31 @@ export const Card: FC<CardProps> = ({
     <div
       onMouseOver={toggleMouseOver}
       onMouseOut={toggleMouseOver}
-      className=" hover:scale-105 mt-2  flex flex-row bg-white rounded-lg overflow-hidden border border-black basis-90 max-w-md object-cover rounded ml-5 mr-5 mb-6 cursor-pointer relative"
-      onClick={onFilmClick}>
-      <Image
-        width={320}
-        height={600}
-        src={medium_cover_image}
-        alt={title}
-      />
-      <div className="flex flex-col p-5 max-w-xs h-full bg-yellow-400">
-        <span className="text-extrabold text-xl">
-          {title} {year}
-        </span>
-        <span className="text-black font-extralight">
-          {description?.slice(0, 60)}...
-        </span>
-        <span>
-          Rating: <b>{rating}</b>
-        </span>
-        <div className="flex justify-beetwen mt-auto items-center">
-          <span className=" font-extrabold ">{genre}</span>
-          <button className="border-2 border-black ml-auto mt-auto p-2 rounded-md hover:bg-black hover:text-white">
-            Go to the film
-          </button>
+      className=" hover:scale-105 mt-2 rounded-lg px-2 mb-2"
+      onClick={onFilmClick}
+      style={{ maxWidth: "180px" }}>
+      <div className="relative rounded-lg">
+        <Image
+          width={203}
+          height={300}
+          loading="lazy"
+          className="rounded-lg"
+          src={medium_cover_image}
+          alt={title}
+        />
+        <div
+          className="flex flex-col h-full  w-full absolute top-0 left-0 opacity-0 hover:opacity-100 rounded-lg px-4 py-2 justify-center cursor-pointer "
+          style={{ backgroundColor: "rgba(7,5,14,.8)" }}>
+          <span className="font-extrabold text-2xl text-white mb-3">
+            {rating}
+          </span>
+          <span className=" text-base text-white">
+            {title}, {year}
+          </span>
+          <span className="text-white font-extralight">{genre}</span>
         </div>
       </div>
+      <p className="truncate mt-3">{title}</p>
     </div>
   );
 };

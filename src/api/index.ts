@@ -1,4 +1,6 @@
 import axios from "axios";
+import { movies } from "../../movies";
+import { movie } from "../../movie";
 
 const instance = axios.create({
   baseURL: "https://yts.mx/api/v2/",
@@ -38,7 +40,12 @@ export type MovieList = {
   }[];
 };
 
-export const getFilms = async (currentPage: string) => {
+export const getFilms = async (
+  currentPage: string,
+  genre: string,
+  query: string,
+  sortBy: string
+) => {
   const response = await instance.get<{
     data: {
       movie_count: number;
@@ -46,15 +53,17 @@ export const getFilms = async (currentPage: string) => {
       page_count: number;
       movies: MovieList[];
     };
-  }>(`list_movies.json?page=${currentPage}&limit=${8}`);
+  }>(
+    `list_movies.json?page=${currentPage}&limit=${40}&genre=${genre}&query_term=${query}&sort_by=${sortBy}`
+  );
   return response.data.data;
 };
 
 export const getFilmById = async (id: string) => {
-  const response = await instance.get<{
-    data: {
-      movie: MovieList;
-    };
-  }>(`movie_details.json?movie_id=${id}`);
-  return response.data.data.movie;
+  const response = await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(movie.data.movie);
+    }, 700);
+  });
+  return response;
 };
